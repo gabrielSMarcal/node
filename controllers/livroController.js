@@ -1,10 +1,10 @@
-const fs = require('fs')
+const { getTotosLivros } = require('../services/livroService')
 
 function getLivros(req, res) {
 
     try {
 
-        const livros = JSON.parse(fs.readFileSync('livros.json'))
+        const livros = getTotosLivros()
         res.send(livros)
 
     } catch (error) {
