@@ -1,8 +1,15 @@
-const { Router } = require('express')
+const { Router, response } = require('express')
 const router = Router()
 
 router.get('/', (req, res) => {
-    res.send('Hello World from Moon!')
+    try {
+        throw new Error('Teste')
+        res.send('Hello World from Moon!')
+    } catch (error) {
+        res.status(500)
+        res.send(error.message)
+    }
+    
 })
 
 router.patch('/', (req, res) => {
