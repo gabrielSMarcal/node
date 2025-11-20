@@ -1,5 +1,5 @@
 const express = require('express')
-const rotaLivrto = require('./rotas/livro')
+const rotaLivrto = require('./routers/livro')
 const app = express()
 const port = 8000
 

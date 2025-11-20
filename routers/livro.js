@@ -1,16 +1,8 @@
-const { Router, response } = require('express')
+const { Router } = require('express')
+const { getLivros } = require('../controllers/livroController')
 const router = Router()
 
-router.get('/', (req, res) => {
-    try {
-        throw new Error('Teste')
-        res.send('Hello World from Moon!')
-    } catch (error) {
-        res.status(500)
-        res.send(error.message)
-    }
-    
-})
+router.get('/', getLivros)
 
 router.patch('/', (req, res) => {
     res.send('Teste de PATCH na rota de livros')
