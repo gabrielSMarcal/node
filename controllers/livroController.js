@@ -33,9 +33,14 @@ function postLivro(req, res) {
 
     try {       
         const novoLivro = req.body
-        insereLivro(novoLivro)
-        res.status(201)
-        res.send(`Livro inserido com sucesso! ID ${novoLivro.id}`)
+        if (req.body.nome) {
+            insereLivro(novoLivro)
+            res.status(201)
+            res.send(`Livro inserido com sucesso! ID ${novoLivro.id}`)
+        } else {
+            res.status(422)
+            res.send('O nome do livro é obrigatório!')
+        }
     } catch (error) {
         res.status(500)
         res.send(error.message)
