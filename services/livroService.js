@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { get } = require('http')
 
-function getTotosLivros(req, res) {
+function getTotosLivros() {
     return JSON.parse(fs.readFileSync('livros.json'))
 }
 
@@ -32,9 +32,17 @@ function modificaLivro(modificacoes, id) {
     fs.writeFileSync('livros.json', JSON.stringify(livrosAtuais))
 }
 
+function apagaLivro(id) {
+    const livros = getTotosLivros()
+    const livroFiltrado = livros.filter(livro => livro.id !== id)
+
+    fs.writeFileSync('livros.json', JSON.stringify(livroFiltrado))
+}
+
 module.exports = {
     getTotosLivros,
     getLivroPorId,
     insereLivro,
-    modificaLivro
+    modificaLivro,
+    apagaLivro
 }
