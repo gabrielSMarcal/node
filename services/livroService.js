@@ -33,6 +33,7 @@ function modificaLivro(modificacoes, id) {
 }
 
 function apagaLivro(id) {
+    
     const livros = getTotosLivros()
     const livroFiltrado = livros.filter(livro => livro.id !== id)
 
