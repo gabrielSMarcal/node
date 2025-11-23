@@ -13,7 +13,7 @@ function getLivroPorId(id) {
     return livroFiltrado
 }
 
-function insereLivro(novoLivro) {
+function adicionarLivro(novoLivro) {
 
     const livros = getTotosLivros()
     const novaListaDeLivros = [...livros, novoLivro]
@@ -21,7 +21,7 @@ function insereLivro(novoLivro) {
     fs.writeFileSync('livros.json', JSON.stringify(novaListaDeLivros))
 }
 
-function modificaLivro(modificacoes, id) {
+function modificarLivro(modificacoes, id) {
 
     let livrosAtuais = getTotosLivros()
     const indiceModificado = livrosAtuais.findIndex(livro => livro.id === id)
@@ -32,7 +32,7 @@ function modificaLivro(modificacoes, id) {
     fs.writeFileSync('livros.json', JSON.stringify(livrosAtuais))
 }
 
-function apagaLivro(id) {
+function apagarLivro(id) {
     
     const livros = getTotosLivros()
     const livroFiltrado = livros.filter(livro => livro.id !== id)
@@ -43,7 +43,7 @@ function apagaLivro(id) {
 module.exports = {
     getTotosLivros,
     getLivroPorId,
-    insereLivro,
-    modificaLivro,
-    apagaLivro
+    adicionarLivro,
+    modificarLivro,
+    apagarLivro
 }

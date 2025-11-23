@@ -1,4 +1,4 @@
-const { getTotosLivros, getLivroPorId, insereLivro, modificaLivro, apagaLivro } = require('../services/livroService')
+const { getTotosLivros, getLivroPorId, adicionarLivro, modificarLivro, apagarLivro } = require('../services/livroService')
 
 function getLivros(req, res) {
 
@@ -34,7 +34,7 @@ function postLivro(req, res) {
     try {       
         const novoLivro = req.body
         if (req.body.nome) {
-            insereLivro(novoLivro)
+            adicionarLivro(novoLivro)
             res.status(201)
             res.send(`Livro inserido com sucesso! ID ${novoLivro.id}`)
         } else {
@@ -53,7 +53,7 @@ function patchLivro(req, res) {
         const modificacoes = req.body
 
         if (id && Number(id)) {
-            modificaLivro(modificacoes, id)
+            modificarLivro(modificacoes, id)
             res.send(`Livro ${id} modificado com sucesso!`)
         } else {
             res.status(422)
@@ -70,7 +70,7 @@ function deleteLivro(req, res) {
         const id = req.params.id
 
         if (id && Number(id)) {
-            apagaLivro(id)
+            apagarLivro(id)
             res.send(`Livro ${id} apagado com sucesso!`)
         } else {
             res.status(422)
